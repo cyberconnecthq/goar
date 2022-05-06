@@ -18,13 +18,14 @@ type Box struct {
 
 func Test_SendData(t *testing.T) {
 	arNode := "https://arweave.net"
-	w, err := goar.NewWalletFromPath("../arweave-keyfile-Tmi2SGLWNkz6IEr110F1VWewauOdTjN41rZO0rQ16ig.json", arNode) // your wallet private key
+	privateKey := "ask me"
+	w, err := goar.NewWallet([]byte(privateKey), arNode) // your wallet private key
 	assert.NoError(t, err)
 
 	box := Box{
 		Width:  10,
 		Height: 20,
-		Color:  "blue",
+		Color:  "yellow",
 		Open:   false,
 	}
 	data, _ := json.Marshal(box)
