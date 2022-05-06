@@ -31,8 +31,8 @@ func Test_SendData(t *testing.T) {
 	data, _ := json.Marshal(box)
 	tags := []types.Tag{
 		{Name: "Content-Type", Value: "application/json"},
-		{Name: "App-Name", Value: "CyberConnect"},
-		{Name: "Contributor", Value: "0x8ddD03b89116ba89E28Ef703fe037fF77451e38E"},
+		{Name: "Application", Value: "CyberConnect"},
+		{Name: "Creator", Value: "0x8ddD03b89116ba89E28Ef703fe037fF77451e38E"},
 	}
 	tx, err := w.SendDataSpeedUp(data, tags, 10)
 	assert.NoError(t, err)
