@@ -38,26 +38,24 @@ func main() {
 		Open:   false,
 	}
 	data2, _ := json.Marshal(box2)
-
-	target := "Fkj5J8CDLC9Jif4CzgtbiXJBnwXLSrp5AaIllleH_yY"
 	tags := []types.Tag{
 		{Name: "Content-Type", Value: "application/json"},
 		{Name: "Application", Value: "CyberConnect"},
 		{Name: "Creator", Value: "0x8ddD03b89116ba89E28Ef703fe037fF77451e38E"},
 	}
-	item01, err := w.CreateAndSignBundleItem(data, 1, target, "", tags)
+	item01, err := w.CreateAndSignBundleItem(data, 1, "", "", tags)
 	if err != nil {
 		panic(err)
 	}
 
-	item02, err := w.CreateAndSignBundleItem(data2, 1, target, "", tags)
+	item02, err := w.CreateAndSignBundleItem(data2, 1, "", "", tags)
 	if err != nil {
 		panic(err)
 	}
 
 	items := []types.BundleItem{item01, item02}
 
-	resp, err := w.Client.BatchSendItemToBundler(items, "")
+	resp, err := w.Client.BatchSendItemToBundler(items, "https://node1.bundlr.network")
 	if err != nil {
 		panic(err)
 	}
